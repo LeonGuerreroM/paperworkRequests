@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "deployDocs": "gh-pages -d docs"
   },
   "keywords": [],
   "author": "León Mora Guerrero <leonmora19@outlook.com>",
@@ -21,6 +22,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "jsdoc": "^3.6.10"
   }
 }
