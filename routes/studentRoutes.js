@@ -8,10 +8,17 @@ const router = express.Router();
     */
 
     /**
-    * @Function getStudents
-    * 
-    * @returns {object} Students List
-    */
+     * @name getStudents
+     * @path {GET} /api/v1/students/
+     * 
+     * @header {String} Authorization Bearer token
+     * 
+     * @response {Object} every registered student
+     * 
+     * @code {200} students list returned
+     * @code {400} wrong body parameters
+     * @code {500} internal errors with the request
+     */
 router.get('/', 
     async (req, res) => {
         const students = await service.getStudents();
@@ -26,6 +33,9 @@ router.get('/',
     * @param {number} idStudent wanted student id
     * 
     * @returns {object} wanted student
+    * 
+    * @code {200} students list returned
+    * 
     */
 router.get('/studentSearch/:idStudent', 
     async (res, req) => {
@@ -38,18 +48,31 @@ router.get('/studentSearch/:idStudent',
 
 
     /**
-    * @Function createStudent
-    * @param {string} email institutional email
-    * @param {number} studentNumber academic student id
-    * @param {string} firstName student's first name
-    * @param {string} lastName1 first student's last name
-    * @param {string} lastName2 second student's last name
-    * @param {string} password
-    * @param {number} idMajor student's major id from majors cat
-    * @param {number} idAcademicStatus student's Academic Status id
-    * file: image
-    * @returns {object} created student
-    */
+   * @name createStudent
+   * @path {POST} /api/v1/students/
+   *
+   * @header {String} Authorization Bearer token
+   *
+   * @body {String} email institutional email
+   * @body {Number} studentNumber academic student id
+   * @body {String} firstName student's first name
+   * @body {String} lastName1 first student's last name
+   * @body {String} lastName2 second student's last name
+   * @body {String} password
+   * @body {Number} idMajor student's major id from majors cat
+   * @body {Number} idAcademicStatus student's Academic Status id
+   * @body {Number} idStatus student's status at the platform id
+   * @body {file}   image user related area
+   * 
+   *
+   * @response {Object} object.data created student data
+   *
+   * @code {200} student created
+   * @code {401} unmatched privileges or token absence
+   * @code {400} wrong body parameters
+   * @code {500} internal errors with the request
+   *
+   */
 router.post('/register', 
     async (req, res) => {
         const { body } = req;
@@ -58,21 +81,34 @@ router.post('/register',
     }
 );
 
-
-
     /**
-    * @Function updateStudent
-    * @param {string} email institutional email
-    * @param {number} studentNumber academic student id
-    * @param {string} firstName student's first name
-    * @param {string} lastName1 first student's last name
-    * @param {string} lastName2 second student's last name
-    * @param {string} password
-    * @param {number} idMajor student's major id from majors cat
-    * @param {number} idAcademicStatus student's Academic Status id
-    * file: image
-    * @returns {object} updated student
-    */
+   * @name updateStudent
+   * @path {PATCH} /api/v1/students/
+   *
+   * @header {String} Authorization Bearer token
+   *
+   * @body {String} [email] institutional email
+   * @body {Number} [studentNumber] academic student id
+   * @body {String} [firstName] student's first name
+   * @body {String} [lastName1] first student's last name
+   * @body {String} [lastName2] second student's last name
+   * @body {String} [password]
+   * @body {Number} [idMajor] student's major id from majors cat
+   * @body {Number} [idAcademicStatus] student's Academic Status id
+   * @body {Number} [idStatus] student's status at the platform id
+   * @body {file} [image] user related area
+   * 
+   *
+   * @response {Object} object.data updated student data
+   *
+   * @code {200} student updated
+   * @code {401} unmatched privileges or token absence
+   * @code {400} wrong body parameters
+   * @code {404} not founded user
+   * @code {500} internal errors with the request
+   *
+   */
+
 router.patch('/info/:id', 
     async (req, res) => {
         const { id } = req.params;
