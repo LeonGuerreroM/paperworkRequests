@@ -1,4 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const {AREA_TABLE} =  require('./areaModel');
+const {AS_TABLE} =  require('./academicStatusModel');
+
 
 const POST_TABLE = 'tbl_post';
 
@@ -12,7 +15,13 @@ const PostSchema = {
     idArea: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_area'
+        field: 'id_area',
+        references: {
+            model: AREA_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     content: {
         allowNull: false,
@@ -25,14 +34,20 @@ const PostSchema = {
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        field: 'create_at',
+        field: 'created_at',
         defaultValue: Sequelize.NOW
     },
     idAcademicStatus: {
         allowNull: false,
         type: DataTypes.INTEGER,
         field: 'id_academic_status',
-        defaultValue: 1
+        defaultValue: 1,
+        references: {
+            model: AS_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     }
 };
 

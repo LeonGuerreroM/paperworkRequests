@@ -1,4 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const {MAJOR_TABLE} = require('./majorModel');
+const {AS_TABLE} = require('./academicStatusModel');
+const {STATUS_TABLE} = require('./statusModel');
 
 const STUDENT_TABLE = 'tbl_student';
 
@@ -42,16 +45,37 @@ const StudentSchema = {
     },
     idMajor: {
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        field: 'id_major',
+        references: {
+            model: MAJOR_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE', 
+        onDelete: 'SET NULL'
     },
     idAcademicStatus: {
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        field: 'id_academic_status',
+        references: {
+            model: AS_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     idStatus: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        defaultValue: 1
+        defaultValue: 1,
+        field: 'id_status',
+        references: {
+            model: STATUS_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
     },
     image: {
         allowNull: true,
@@ -60,7 +84,7 @@ const StudentSchema = {
     createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        field: 'create_at',
+        field: 'created_at',
         defaultValue: Sequelize.NOW
     }
 }

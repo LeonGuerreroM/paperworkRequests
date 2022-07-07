@@ -1,36 +1,40 @@
-const { Model, DataTypes, Sequelize } = require('sequelize');
-const {AREA_TABLE} =  require('./areaModel');
+const {DataTypes, Model, Sequelize} = require('sequelize');
+const {ROL_TABLE} = require('./rolModel');
 
-const EVENT_TABLE = 'tbl_event';
+const EMPLOYEE_TABLE = 'tbl_employee';
 
-const EventSchema = {
+const EmployeeSchema = {
     id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
     },
-    name: {
+    employeeNumber: {
         allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+    },
+    password: {
+        allowNull: false,
+        type: DataTypes.STRING,
+    },
+    email: {
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+        validate: { isEmail: true }
+    },
+    image: {
+        allowNull: true,
         type: DataTypes.STRING
     },
-    startDatetime: {
-        allowNull: false,
-        type: DataTypes.DATE,
-        field: 'start_datetime'
-    },
-    endDatetime: {
-        allowNull: false,
-        type: DataTypes.DATE,
-        field: 'end_datetime'
-    },
-    idArea: {
+    idRol: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_area',
-        defaultValue: 1,
+        field: 'id_rol',
         references: {
-            model: AREA_TABLE,
+            model: ROL_TABLE,
             key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -44,7 +48,7 @@ const EventSchema = {
     }
 };
 
-class Event extends Model {
+class Employee extends Model{
 
     static associate(models){
 
@@ -53,12 +57,12 @@ class Event extends Model {
     static config(sequelize){
         return{
             sequelize,
-            tableName: EVENT_TABLE,
-            modelName: 'Event',
+            tableName: EMPLOYEE_TABLE,
+            modelName: 'Employee',
             timestamps: false
         }
     }
 
 }
 
-module.exports = { EVENT_TABLE, EventSchema, Event };
+module.exports = { EMPLOYEE_TABLE, EmployeeSchema, Employee };
