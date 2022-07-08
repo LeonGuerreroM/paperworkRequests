@@ -19,7 +19,14 @@ const ASSchema = {
 class AS extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Student, {
+            as: 'students',
+            foreignKey: 'idAcademicStatus'
+        });
+        this.hasMany(models.Post, {
+            as: 'posts',
+            foreignKey: 'idAcademicStatus'
+        })
     }
 
     static config(sequelize){

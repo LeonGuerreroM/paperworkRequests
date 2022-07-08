@@ -40,6 +40,28 @@ function setupModels(sequelize){
     MNS.init(MNSSchema, MNS.config(sequelize));
 
 
+    Major.associate(sequelize.models);
+    AS.associate(sequelize.models);
+    Status.associate(sequelize.models);
+    Area.associate(sequelize.models);
+    Rol.associate(sequelize.models);
+    Process.associate(sequelize.models);
+    Level.associate(sequelize.models);
+    Student.associate(sequelize.models);
+    Post.associate(sequelize.models);
+    Event.associate(sequelize.models);
+    MN.associate(sequelize.models);
+    Employee.associate(sequelize.models);
+    Discharge.associate(sequelize.models);
+    Dictamen.associate(sequelize.models);
+    Graduation.associate(sequelize.models);
+    SS.associate(sequelize.models);
+    PStep.associate(sequelize.models);
+    UN.associate(sequelize.models);
+
+    
 }
+
+
 
 module.exports = { setupModels };

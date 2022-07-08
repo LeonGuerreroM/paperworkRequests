@@ -18,7 +18,10 @@ const MajorSchema = {
 class Major extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Student, {
+            as: 'students',
+            foreignKey: 'idMajor'
+        });
     }
 
     static config(sequelize){

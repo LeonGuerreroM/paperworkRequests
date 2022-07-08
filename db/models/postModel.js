@@ -54,7 +54,8 @@ const PostSchema = {
 class Post extends Model {
 
     static associate(models){
-
+        this.belongsTo(models.Area, { as: 'area' });
+        this.belongsTo(models.AcademicStatus, { as: 'academicStatus' });
     }
 
     static config(sequelize){

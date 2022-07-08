@@ -51,7 +51,7 @@ const EmployeeSchema = {
 class Employee extends Model{
 
     static associate(models){
-
+        this.belongsTo(models.Rol, { as: 'rol' });
     }
 
     static config(sequelize){

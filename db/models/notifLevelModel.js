@@ -18,7 +18,14 @@ const LevelSchema = {
 class Level extends Model {
 
     static associate(models){
-
+        this.hasMany(models.MassiveNotif, {
+            as: 'massiveNotifs',
+            foreignKey: 'idLevel'
+        })
+        this.hasMany(models.UnitaryNotif, {
+            as: 'unitaryNotifs',
+            foreignKey: 'idLevel'
+        })
     }
 
     static config(sequelize){

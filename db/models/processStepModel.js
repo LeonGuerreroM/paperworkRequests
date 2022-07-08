@@ -50,7 +50,8 @@ const PStepSchema = {
 class PStep extends Model {
     
     static associate(models){ 
-        
+        this.belongsTo(models.Student, { as: 'student' });
+        this.belongsTo(models.Process, { as: 'process' });
     }
 
     static config(sequelize){

@@ -20,7 +20,14 @@ const AreaSchema = {
 class Area extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Post, {
+            as: 'posts',
+            foreignKey: 'idArea'
+        });
+        this.hasMany(models.Event, {
+            as: 'events',
+            foreignKey: 'idArea'
+        });
     }
 
     static config(sequelize){

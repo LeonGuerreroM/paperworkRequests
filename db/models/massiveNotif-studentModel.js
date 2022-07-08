@@ -37,7 +37,7 @@ const MNSSchema = {
 
 class MNS extends Model {
     
-    static associate(models){ 
+    static associate(models){ //eslint-disable-line
         
     }
 

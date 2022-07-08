@@ -47,7 +47,7 @@ const EventSchema = {
 class Event extends Model {
 
     static associate(models){
-
+        this.belongsTo(models.Area, { as: 'area' });
     }
 
     static config(sequelize){

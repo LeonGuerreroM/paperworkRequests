@@ -92,7 +92,36 @@ const StudentSchema = {
 class Student extends Model {
     
     static associate(models){ 
-        
+        this.belongsTo(models.Major, {as: 'major'});
+        this.belongsTo(models.Status, {as: 'status'});
+        this.belongsTo(models.AcademicStatus, {as: 'academicStatus'});
+
+        this.hasOne(models.Discharge, {
+            as: 'discharge',
+            foreignKey: 'idStudent'
+        });
+        this.hasOne(models.Dictamen, {
+            as: 'dictamen',
+            foreignKey: 'idStudent'
+        });
+        this.hasOne(models.Graduation, {
+            as: 'graduation',
+            foreignKey: 'idStudent'
+        });
+        this.hasOne(models.SS, {
+            as: 'ss',
+            foreignKey: 'idStudent'
+        });
+
+        this.hasMany(models.PStep, {
+            as: 'psteps',
+            foreignKey: 'idStudent'
+        });
+        this.hasMany(models.UnitaryNotif, {
+            as: 'unitaryNotifs',
+            foreignKey: 'idStudent'
+        });
+
     }
 
     static config(sequelize){

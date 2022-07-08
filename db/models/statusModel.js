@@ -18,14 +18,17 @@ const StatusSchema = {
 class Status extends Model {
 
     static associate(models){
-
+        this.hasMany(models.Student, {
+            as: 'students',
+            foreignKey: 'idStatus'
+        });
     }
 
     static config(sequelize){
         return{
             sequelize,
             tableName: STATUS_TABLE,
-            modelName: 'AcademicStatus',
+            modelName: 'Status',
             timestamps: false
         }
     }

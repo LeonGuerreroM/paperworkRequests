@@ -52,7 +52,8 @@ const UNSchema = {
 class UN extends Model {
     
     static associate(models){ 
-        
+        this.belongsTo(models.Student, { as: 'student' });
+        this.belongsTo(models.Level, { as: 'level' });
     }
 
     static config(sequelize){

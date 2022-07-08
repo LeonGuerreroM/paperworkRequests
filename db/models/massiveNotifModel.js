@@ -1,5 +1,6 @@
 const {DataTypes, Model, Sequelize} = require('sequelize');
 const {LEVEL_TABLE} = require('./notifLevelModel');
+const { Student } = require('./studentModel');
 
 const MN_TABLE = 'tbl_massive_notif';
 
@@ -40,7 +41,14 @@ const MNSchema = {
 class MN extends Model{
 
     static associate(models){
+        this.belongsTo(models.Level, { as: 'level' });
 
+        this.belongsToMany(models.Student, {
+            as: 'receivers',
+            through: models.MN-Student,
+            foreignKey: 'idMassiveNotif',
+            otherKey: 'idStudent'
+        });
     }
 
     static config(sequelize){

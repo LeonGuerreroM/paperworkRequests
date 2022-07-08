@@ -48,7 +48,7 @@ const DischargeSchema = {
 class Discharge extends Model{
 
     static associate(models){
-
+        this.belongsTo(models.Student, { as: 'student' });
     }
 
     static config(sequelize){

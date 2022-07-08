@@ -18,7 +18,10 @@ const ProcessSchema = {
 class Process extends Model {
 
     static associate(models){
-
+        this.hasMany(models.PStep, {
+            as: 'psteps',
+            foreignKey: 'idProcess'
+        })
     }
 
     static config(sequelize){
