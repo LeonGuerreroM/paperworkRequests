@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 const {STUDENT_TABLE} = require('./studentModel');
-const {LEVEL_TABLE} = require('./levelModel');
+const {LEVEL_TABLE} = require('./notifLevelModel');
 
 const UN_TABLE = 'tbl_unitary_notif';
 
