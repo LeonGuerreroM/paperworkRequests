@@ -1,7 +1,7 @@
 const express = require('express');
 const success = require('../utils/successResponse');
 
-const router = express.Routes();
+const router = express.Router();
 
     /** 
     * @module EmployeesRoutes
@@ -16,6 +16,14 @@ router.get('/',
     async (req, res) => {
         const employees = await service.getEmployees();
         success(res, 200, 'employees', employees, 'employees list');
+    }
+);
+
+
+router.get('/:id',
+    async (req, res) => {
+        const employee = await service.getEmployee();
+        success(res, 200, 'employee', employee, 'wanted employee')
     }
 );
 

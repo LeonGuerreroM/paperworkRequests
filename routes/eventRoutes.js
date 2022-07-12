@@ -1,7 +1,7 @@
 const express = require('express');
 const success = require('../utils/successResponse');
 
-const router = express.Routes();
+const router = express.Router();
 
     /** 
     * @module EventsRoutes
