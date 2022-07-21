@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: PostsRoutes</title>
+    <title>JSDoc: Module: ProcessStepRoutes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: PostsRoutes</h1>
+    <h1 class="page-title">Module: ProcessStepRoutes</h1>
 
     
 
@@ -58,7 +58,7 @@
 
         
             
-<h4 class="name" id="createPost"><span class="type-signature">(route) </span>createPost<span class="type-signature"></span></h4>
+<h4 class="name" id="createProcess"><span class="type-signature">(route) </span>createProcess<span class="type-signature"></span></h4>
 
 
 
@@ -69,7 +69,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">POST</td>
-                            <td class="name last">/api/v1/posts/createPost</td>
+                            <td class="name last">/api/v1/process-step/open-process</td>
                             </tr>
                             </table>
                             
@@ -79,35 +79,17 @@
               <tr>
                 <th>Name</th>
                 <th>Type</th>
-                <th>Attributes</th>
+                
                 
                 <th class="last">Description</th>
               </tr>
             </thead>
             <tr>
-            <td class="name">content</td>
-            <td class="type">String</td>
-            <td class="attributes"></td>
-            
-            <td class="description last">post content</td>
-          </tr><tr>
-            <td class="name">idArea</td>
+            <td class="name">step</td>
             <td class="type">Number</td>
-            <td class="attributes"></td>
             
-            <td class="description last">related area id</td>
-          </tr><tr>
-            <td class="name">image</td>
-            <td class="type">String</td>
-            <td class="attributes">optional</td>
             
-            <td class="description last">picture related to the post</td>
-          </tr><tr>
-            <td class="name">idAcademicStatus</td>
-            <td class="type">Number</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">related academic status id</td>
+            <td class="description last">current process step</td>
           </tr>
           </table>
                             <h5>Header Parameters:</h5>
@@ -126,7 +108,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Employee)</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -222,7 +204,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line58">line 58</a>
+        <a href="routes_processStepRoutes.js.html">routes/processStepRoutes.js</a>, <a href="routes_processStepRoutes.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -240,171 +222,7 @@
 
         
             
-<h4 class="name" id="deletePosts"><span class="type-signature">(route) </span>deletePosts<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">DELETE</td>
-                            <td class="name last">/api/v1/posts/:idPosts</td>
-                            </tr>
-                            </table>
-                            
-                            <h5>Header Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">Authorization</td>
-            <td class="type">String</td>
-            
-            
-            <td class="description last">Bearer token (Employee)</td>
-          </tr>
-          </table>
-                            <h5>Route Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">idPost</td>
-            <td class="type">Number</td>
-            
-            
-            <td class="description last">searched post id</td>
-          </tr>
-          </table>
-                            <h5>Response:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">object.confirmation</td>
-            <td class="type">Boolean</td>
-            
-            
-            <td class="description last">done deletion boolean confirmation</td>
-          </tr>
-          </table>
-                            <h5>Response Code:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            
-            <td class="type">200</td>
-            
-            
-            <td class="description last">in case of element deleted</td>
-          </tr><tr>
-            
-            <td class="type">401</td>
-            
-            
-            <td class="description last">in case of unmatched privileges or token absence</td>
-          </tr><tr>
-            
-            <td class="type">404</td>
-            
-            
-            <td class="description last">in case of not founded element</td>
-          </tr><tr>
-            
-            <td class="type">500</td>
-            
-            
-            <td class="description last">in case of internal errors with the request</td>
-          </tr>
-          </table>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line120">line 120</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getPost"><span class="type-signature">(route) </span>getPost<span class="type-signature"></span></h4>
+<h4 class="name" id="getProcessStep"><span class="type-signature">(route) </span>getProcessStep<span class="type-signature"></span></h4>
 
 
 
@@ -415,7 +233,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">GET</td>
-                            <td class="name last">/api/v1/posts/:idPosts</td>
+                            <td class="name last">/api/v1/process-step/:id</td>
                             </tr>
                             </table>
                             
@@ -435,7 +253,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Student, Employee)</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Route Parameters:</h5>
@@ -450,11 +268,11 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">idPost</td>
+            <td class="name">id</td>
             <td class="type">Number</td>
             
             
-            <td class="description last">searched post id</td>
+            <td class="description last">searched student-process relation id</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -550,146 +368,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line32">line 32</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getPosts"><span class="type-signature">(route) </span>getPosts<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/api/v1/posts/feed</td>
-                            </tr>
-                            </table>
-                            
-                            <h5>Header Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">Authorization</td>
-            <td class="type">String</td>
-            
-            
-            <td class="description last">Bearer token (Student, Employee)</td>
-          </tr>
-          </table>
-                            <h5>Response:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">every</td>
-            <td class="type">Object</td>
-            
-            
-            <td class="description last">registered element</td>
-          </tr>
-          </table>
-                            <h5>Response Code:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            
-            <td class="type">200</td>
-            
-            
-            <td class="description last">elements list returned</td>
-          </tr><tr>
-            
-            <td class="type">400</td>
-            
-            
-            <td class="description last">wrong body parameters</td>
-          </tr><tr>
-            
-            <td class="type">500</td>
-            
-            
-            <td class="description last">internal errors with the request</td>
-          </tr>
-          </table>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line10">line 10</a>
+        <a href="routes_processStepRoutes.js.html">routes/processStepRoutes.js</a>, <a href="routes_processStepRoutes.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -718,7 +397,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">PATCH</td>
-                            <td class="name last">/api/v1/posts/:idPost</td>
+                            <td class="name last">/api/v1/process-step/</td>
                             </tr>
                             </table>
                             
@@ -734,29 +413,11 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">content</td>
-            <td class="type">String</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">post content</td>
-          </tr><tr>
-            <td class="name">idArea</td>
+            <td class="name">step</td>
             <td class="type">Number</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">related area id</td>
-          </tr><tr>
-            <td class="name">image</td>
-            <td class="type">String</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">picture related to the post</td>
-          </tr><tr>
-            <td class="name">idAcademicStatus</td>
-            <td class="type">Number</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">related academic status id</td>
+            <td class="description last">current process step</td>
           </tr>
           </table>
                             <h5>Header Parameters:</h5>
@@ -775,7 +436,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Employee)</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Route Parameters:</h5>
@@ -790,11 +451,11 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">idPost</td>
+            <td class="name">id</td>
             <td class="type">Number</td>
             
             
-            <td class="description last">searched post id</td>
+            <td class="description last">searched student-process relation id</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -896,7 +557,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line87">line 87</a>
+        <a href="routes_processStepRoutes.js.html">routes/processStepRoutes.js</a>, <a href="routes_processStepRoutes.js.html#line64">line 64</a>
     </li></ul></dd>
     
 

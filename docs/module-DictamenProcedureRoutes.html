@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: PostsRoutes</title>
+    <title>JSDoc: Module: DictamenProcedureRoutes</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: PostsRoutes</h1>
+    <h1 class="page-title">Module: DictamenProcedureRoutes</h1>
 
     
 
@@ -58,7 +58,7 @@
 
         
             
-<h4 class="name" id="createPost"><span class="type-signature">(route) </span>createPost<span class="type-signature"></span></h4>
+<h4 class="name" id="createDictamenProcedure"><span class="type-signature">(route) </span>createDictamenProcedure<span class="type-signature"></span></h4>
 
 
 
@@ -69,47 +69,10 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">POST</td>
-                            <td class="name last">/api/v1/posts/createPost</td>
+                            <td class="name last">/api/v1/docs/dictamen/start-procedure</td>
                             </tr>
                             </table>
                             
-                            <h5>Body Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Attributes</th>
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">content</td>
-            <td class="type">String</td>
-            <td class="attributes"></td>
-            
-            <td class="description last">post content</td>
-          </tr><tr>
-            <td class="name">idArea</td>
-            <td class="type">Number</td>
-            <td class="attributes"></td>
-            
-            <td class="description last">related area id</td>
-          </tr><tr>
-            <td class="name">image</td>
-            <td class="type">String</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">picture related to the post</td>
-          </tr><tr>
-            <td class="name">idAcademicStatus</td>
-            <td class="type">Number</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">related academic status id</td>
-          </tr>
-          </table>
                             <h5>Header Parameters:</h5>
           <table class="params">
             <thead>
@@ -126,7 +89,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Employee)</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -222,7 +185,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line58">line 58</a>
+        <a href="routes_dictamenDocsRoutes.js.html">routes/dictamenDocsRoutes.js</a>, <a href="routes_dictamenDocsRoutes.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -240,7 +203,7 @@
 
         
             
-<h4 class="name" id="deletePosts"><span class="type-signature">(route) </span>deletePosts<span class="type-signature"></span></h4>
+<h4 class="name" id="deleteDictamenProcedure"><span class="type-signature">(route) </span>deleteDictamenProcedure<span class="type-signature"></span></h4>
 
 
 
@@ -251,7 +214,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">DELETE</td>
-                            <td class="name last">/api/v1/posts/:idPosts</td>
+                            <td class="name last">/api/v1/docs/dictamen/restart-procedure</td>
                             </tr>
                             </table>
                             
@@ -271,26 +234,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Employee)</td>
-          </tr>
-          </table>
-                            <h5>Route Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">idPost</td>
-            <td class="type">Number</td>
-            
-            
-            <td class="description last">searched post id</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -386,7 +330,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line120">line 120</a>
+        <a href="routes_dictamenDocsRoutes.js.html">routes/dictamenDocsRoutes.js</a>, <a href="routes_dictamenDocsRoutes.js.html#line89">line 89</a>
     </li></ul></dd>
     
 
@@ -404,7 +348,7 @@
 
         
             
-<h4 class="name" id="getPost"><span class="type-signature">(route) </span>getPost<span class="type-signature"></span></h4>
+<h4 class="name" id="getDictamenProcedure"><span class="type-signature">(route) </span>getDictamenProcedure<span class="type-signature"></span></h4>
 
 
 
@@ -415,7 +359,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">GET</td>
-                            <td class="name last">/api/v1/posts/:idPosts</td>
+                            <td class="name last">/api/v1/docs/dictamen/student-procedure</td>
                             </tr>
                             </table>
                             
@@ -435,26 +379,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Student, Employee)</td>
-          </tr>
-          </table>
-                            <h5>Route Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">idPost</td>
-            <td class="type">Number</td>
-            
-            
-            <td class="description last">searched post id</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -550,7 +475,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line32">line 32</a>
+        <a href="routes_dictamenDocsRoutes.js.html">routes/dictamenDocsRoutes.js</a>, <a href="routes_dictamenDocsRoutes.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -568,146 +493,7 @@
 
         
             
-<h4 class="name" id="getPosts"><span class="type-signature">(route) </span>getPosts<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/api/v1/posts/feed</td>
-                            </tr>
-                            </table>
-                            
-                            <h5>Header Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">Authorization</td>
-            <td class="type">String</td>
-            
-            
-            <td class="description last">Bearer token (Student, Employee)</td>
-          </tr>
-          </table>
-                            <h5>Response:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">every</td>
-            <td class="type">Object</td>
-            
-            
-            <td class="description last">registered element</td>
-          </tr>
-          </table>
-                            <h5>Response Code:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            
-            <td class="type">200</td>
-            
-            
-            <td class="description last">elements list returned</td>
-          </tr><tr>
-            
-            <td class="type">400</td>
-            
-            
-            <td class="description last">wrong body parameters</td>
-          </tr><tr>
-            
-            <td class="type">500</td>
-            
-            
-            <td class="description last">internal errors with the request</td>
-          </tr>
-          </table>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="updatePost"><span class="type-signature">(route) </span>updatePost<span class="type-signature"></span></h4>
+<h4 class="name" id="updateDictamenProcedure"><span class="type-signature">(route) </span>updateDictamenProcedure<span class="type-signature"></span></h4>
 
 
 
@@ -718,7 +504,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">PATCH</td>
-                            <td class="name last">/api/v1/posts/:idPost</td>
+                            <td class="name last">/api/v1/docs/dictamen</td>
                             </tr>
                             </table>
                             
@@ -734,29 +520,29 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">content</td>
-            <td class="type">String</td>
+            <td class="name">doc1</td>
+            <td class="type">Boolean</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">post content</td>
+            <td class="description last">doc1 status</td>
           </tr><tr>
-            <td class="name">idArea</td>
-            <td class="type">Number</td>
+            <td class="name">doc2</td>
+            <td class="type">Boolean</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">related area id</td>
+            <td class="description last">doc2 status</td>
           </tr><tr>
-            <td class="name">image</td>
-            <td class="type">String</td>
+            <td class="name">doc3</td>
+            <td class="type">Boolean</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">picture related to the post</td>
+            <td class="description last">doc3 status</td>
           </tr><tr>
-            <td class="name">idAcademicStatus</td>
-            <td class="type">Number</td>
+            <td class="name">doc4</td>
+            <td class="type">Boolean</td>
             <td class="attributes">optional</td>
             
-            <td class="description last">related academic status id</td>
+            <td class="description last">doc4 status</td>
           </tr>
           </table>
                             <h5>Header Parameters:</h5>
@@ -775,26 +561,7 @@
             <td class="type">String</td>
             
             
-            <td class="description last">Bearer token (Employee)</td>
-          </tr>
-          </table>
-                            <h5>Route Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">idPost</td>
-            <td class="type">Number</td>
-            
-            
-            <td class="description last">searched post id</td>
+            <td class="description last">Bearer token (Student)</td>
           </tr>
           </table>
                             <h5>Response:</h5>
@@ -896,7 +663,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_postRoutes.js.html">routes/postRoutes.js</a>, <a href="routes_postRoutes.js.html#line87">line 87</a>
+        <a href="routes_dictamenDocsRoutes.js.html">routes/dictamenDocsRoutes.js</a>, <a href="routes_dictamenDocsRoutes.js.html#line58">line 58</a>
     </li></ul></dd>
     
 

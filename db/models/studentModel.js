@@ -22,7 +22,7 @@ const StudentSchema = {
         allowNull: false,
         unique: true,
         field: 'student_number',
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     },
     firstName: {
         allowNull: false,
