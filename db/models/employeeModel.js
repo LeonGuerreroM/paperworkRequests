@@ -14,16 +14,32 @@ const EmployeeSchema = {
         allowNull: false,
         unique: true,
         type: DataTypes.STRING,
-    },
-    password: {
-        allowNull: false,
-        type: DataTypes.STRING,
+        field: 'employee_number'
     },
     email: {
         allowNull: false,
         unique: true,
         type: DataTypes.STRING,
         validate: { isEmail: true }
+    },
+    firstName: {
+        allowNull: false,
+        field: 'first_name',
+        type: DataTypes.STRING
+    },
+    lastName1: {
+        allowNull: false,
+        field: 'last_name_1',
+        type: DataTypes.STRING
+    },
+    lastName2: {
+        allowNull: false,
+        field: 'last_name_2',
+        type: DataTypes.STRING
+    },
+    password: {
+        allowNull: false,
+        type: DataTypes.STRING,
     },
     image: {
         allowNull: true,

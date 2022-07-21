@@ -12,6 +12,10 @@ const PostSchema = {
         primaryKey: true,
         type: DataTypes.INTEGER
     },
+    content: {
+        allowNull: false,
+        type: DataTypes.STRING
+    },
     idArea: {
         allowNull: false,
         type: DataTypes.INTEGER,
@@ -22,10 +26,6 @@ const PostSchema = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
-    },
-    content: {
-        allowNull: false,
-        type: DataTypes.STRING
     },
     image: {
         allowNull: true,
