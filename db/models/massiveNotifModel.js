@@ -45,7 +45,7 @@ class MN extends Model{
 
         this.belongsToMany(models.Student, {
             as: 'receivers',
-            through: models.MN-Student,
+            through: models.MNStudent,
             foreignKey: 'idMassiveNotif',
             otherKey: 'idStudent'
         });

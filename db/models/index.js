@@ -64,4 +64,4 @@ function setupModels(sequelize){
 
 
 
-module.exports = { setupModels };
+module.exports = setupModels;

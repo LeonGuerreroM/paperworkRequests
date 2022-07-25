@@ -48,6 +48,10 @@ const PostSchema = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
+    },
+    document: {
+        allowNull: true,
+        type: DataTypes.STRING
     }
 };
 

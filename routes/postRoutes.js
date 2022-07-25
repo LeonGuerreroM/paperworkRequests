@@ -65,6 +65,7 @@ router.get('/:idPost',
    * @body {Number} idArea related area id
    * @body {String} [image] picture related to the post
    * @body {Number} [idAcademicStatus] related academic status id
+   * @body {String} [document] document related to the post
    *
    * @response {Object} object.data created element data
    *
@@ -96,6 +97,7 @@ router.post('/createPost',
    * @body {Number} [idArea] related area id
    * @body {String} [image] picture related to the post
    * @body {Number} [idAcademicStatus] related academic status id
+   * @body {String} [document] document related to the post
    * 
    * @response {Object} object.data updated element data
    *

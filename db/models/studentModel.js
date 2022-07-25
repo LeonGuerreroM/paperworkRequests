@@ -1,7 +1,7 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
-const {MAJOR_TABLE} = require('./majorModel');
-const {AS_TABLE} = require('./academicStatusModel');
-const {STATUS_TABLE} = require('./statusModel');
+const { MAJOR_TABLE } = require('./majorModel');
+const { AS_TABLE } = require('./academicStatusModel');
+const { STATUS_TABLE } = require('./statusModel');
 
 const STUDENT_TABLE = 'tbl_student';
 
@@ -43,10 +43,10 @@ const StudentSchema = {
         allowNull: false,
         type: DataTypes.STRING
     },
-    idMajor: {
+    majorId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_major',
+        field: 'major_id',
         references: {
             model: MAJOR_TABLE,
             key: 'id'
@@ -54,10 +54,10 @@ const StudentSchema = {
         onUpdate: 'CASCADE', 
         onDelete: 'SET NULL'
     },
-    idAcademicStatus: {
+    academicStatusId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_academic_status',
+        field: 'academic_status_id',
         references: {
             model: AS_TABLE,
             key: 'id'
@@ -65,11 +65,11 @@ const StudentSchema = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
     },
-    idStatus: {
+    statusId: {
         allowNull: false,
         type: DataTypes.INTEGER,
         defaultValue: 1,
-        field: 'id_status',
+        field: 'status_id',
         references: {
             model: STATUS_TABLE,
             key: 'id'
@@ -86,17 +86,22 @@ const StudentSchema = {
         type: DataTypes.DATE,
         field: 'created_at',
         defaultValue: Sequelize.NOW
+    },
+    suspendedDate: {
+        allowNull: true,
+        type: DataTypes.DATE,
+        field: 'suspended_date'
     }
 }
 
 class Student extends Model {
     
     static associate(models){ 
-        this.belongsTo(models.Major, {as: 'major'});
+        this.belongsTo(models.Major, { as: 'major' });
         this.belongsTo(models.Status, {as: 'status'});
         this.belongsTo(models.AcademicStatus, {as: 'academicStatus'});
 
-        this.hasOne(models.Discharge, {
+        /*this.hasOne(models.Discharge, {
             as: 'discharge',
             foreignKey: 'idStudent'
         });
@@ -116,7 +121,7 @@ class Student extends Model {
         this.hasMany(models.PStep, {
             as: 'psteps',
             foreignKey: 'idStudent'
-        });
+        });*/
         this.hasMany(models.UnitaryNotif, {
             as: 'unitaryNotifs',
             foreignKey: 'idStudent'

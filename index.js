@@ -5,6 +5,8 @@ const generalRoutes = require('./routes');
 
 const app = express();
 
+app.use(express.json());
+
 generalRoutes(app);
 
 app.listen(config.port, () => {

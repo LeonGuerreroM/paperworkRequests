@@ -1,6 +1,10 @@
 const express = require('express');
 const success = require('../utils/successResponse');
 
+const Service = require('../services/studentServices');
+
+const service = new Service();
+
 const router = express.Router();
 
     /** 
@@ -8,10 +12,9 @@ const router = express.Router();
     */
 
 
-
     /**
    * @name studentInfo Show logged student info
-   * @path {GET} /api/v1/students/myInfo
+   * @path {GET} /api/v1/students/my-info
    *
    * @header {String} Authorization Bearer token (Student)
    *
@@ -23,23 +26,22 @@ const router = express.Router();
    * @code {500} in case of internal errors with the request
    *
    */
-router.get('/myInfo', 
-    async (res, req) => {
+router.get('/my-info', 
+    async (req, res) => { //eslint-disable-line
         //TODO use sub.id
-        const student = await service.getStudentInfo(sub.id);
+        const student = await service.getStudent(3);
         success(res, 200, 'student', student, 'required student');
     }
 );
 
 
-
     /**
    * @name studentSearch Search student by name
-   * @path {GET} /api/v1/students/studentSearch
+   * @path {GET} /api/v1/students/student-search
    *
    * @header {String} Authorization Bearer token (Admin, Employee)
    *
-   * @body {Number} studentNumber searched student number
+   * @body {String} studentNumber searched student number
    * 
    * @response {Object} requested student
    *
@@ -49,14 +51,13 @@ router.get('/myInfo',
    * @code {500} in case of internal errors with the request
    *
    */
-router.get('/studentSearch', 
-    async (res, req) => {
-        const { body } = req;
-        const student = await service.studentSearch(body);
+router.get('/student-search', 
+    async (req, res) => {
+        const { studentNumber } = req.body;
+        const student = await service.studentSearch(studentNumber);
         success(res, 200, 'student', student, 'required student');
     }
 );
-
 
 
     /**
@@ -64,7 +65,7 @@ router.get('/studentSearch',
    * @path {POST} /api/v1/students/
    *
    * @body {String} email institutional email
-   * @body {Number} studentNumber academic student id
+   * @body {String} studentNumber academic student id
    * @body {String} firstName student's first name
    * @body {String} lastName1 first student's last name
    * @body {String} lastName2 second student's last name
@@ -83,17 +84,16 @@ router.get('/studentSearch',
    */
 router.post('/register', 
     async (req, res) => {
-        const { body } = req;
-        const newStudent = await service.createStudent(body);
+        const body = req.body;
+        const newStudent = await service.create(body);
         success(res, 201, 'newStudent', newStudent, 'student created')
     }
 );
 
 
-
     /**
    * @name updateStudentInfo Update student non-crucial info
-   * @path {PATCH} /api/v1/students/updateInfo
+   * @path {PATCH} /api/v1/students/update-info
    *
    * @header {String} Authorization Bearer token (Student)
    *
@@ -101,7 +101,6 @@ router.post('/register',
    * @body {String} [password]
    * @body {Number} [idMajor] student's major id 
    * @body {Number} [idAcademicStatus] student's Academic Status id
-   * @body {Number} [idStatus] student's status at the platform id
    * @body {String} [image] user profile picture
    * 
    *
@@ -114,15 +113,43 @@ router.post('/register',
    * @code {500} internal errors with the request
    *
    */
-router.patch('/updateInfo', 
+router.patch('/update-info', 
     async (req, res) => {
         //TODO use sub.id
-        const { body } =  req;
-        const updatedStudent = await service.updateStudent(sub.id, body);
+        //TODO create specialized service to change password
+        //? have additional service oriented to change academic status
+        const body = req.body;
+        const updatedStudent = await service.update(2, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
     }
 );
 
+
+    /**
+   * @name updateStudentStatus Update student status at the platform 
+   * @path {PATCH} /api/v1/students/update-status
+   *
+   * @header {String} Authorization Bearer token (Student)
+   *
+   * @body {Number} idStatus student's status at the platform id (only accepts active or suspended)
+   * 
+   * @response {Object} object.data updated element data
+   *
+   * @code {200} element updated
+   * @code {401} unmatched privileges or token absence
+   * @code {400} wrong body parameters
+   * @code {404} not founded user
+   * @code {500} internal errors with the request
+   *
+   */
+router.patch('/update-status', 
+    async (req, res) => {
+        //TODO use sub.id
+        const body = req.body;
+        const updatedStudent = await service.update(1, body);
+        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    }
+);
 
 
     /**
@@ -131,7 +158,7 @@ router.patch('/updateInfo',
    *
    * @header {String} Authorization Bearer token (Admin)
    *
-   * @params {Number} student searched student id
+   * @params {Number} idStudent searched student id
    * 
    * @body {Number} [studentNumber] academic student id
    * @body {String} [firstName] student's first name
@@ -150,8 +177,8 @@ router.patch('/updateInfo',
 router.patch('/:idStudent', 
     async (req, res) => {
         const { idStudent } = req.params;
-        const { body } =  req;
-        const updatedStudent = await service.updateStudent(idStudent, body);
+        const body = req.body;
+        const updatedStudent = await service.update(idStudent, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
     }
 );

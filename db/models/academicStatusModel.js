@@ -21,11 +21,11 @@ class AS extends Model {
     static associate(models){
         this.hasMany(models.Student, {
             as: 'students',
-            foreignKey: 'idAcademicStatus'
+            foreignKey: 'academicStatusId'
         });
         this.hasMany(models.Post, {
             as: 'posts',
-            foreignKey: 'idAcademicStatus'
+            foreignKey: 'academicStatusId'
         })
     }
 

@@ -92,7 +92,7 @@
             <td class="description last">institutional email</td>
           </tr><tr>
             <td class="name">studentNumber</td>
-            <td class="type">Number</td>
+            <td class="type">String</td>
             <td class="attributes"></td>
             
             <td class="description last">academic student id</td>
@@ -233,310 +233,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line109">line 109</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getStudentSearchastudentbyId"><span class="type-signature">(route) </span>getStudent Search a student by Id<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/api/v1/students/:idStudent</td>
-                            </tr>
-                            </table>
-                            
-                            <h5>Header Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">Authorization</td>
-            <td class="type">String</td>
-            
-            
-            <td class="description last">Bearer token (Admin)</td>
-          </tr>
-          </table>
-                            <h5>Route Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">idStudent</td>
-            <td class="type">Number</td>
-            
-            
-            <td class="description last">searched student id</td>
-          </tr>
-          </table>
-                            <h5>Response:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">requested</td>
-            <td class="type">Object</td>
-            
-            
-            <td class="description last">element</td>
-          </tr>
-          </table>
-                            <h5>Response Code:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            
-            <td class="type">200</td>
-            
-            
-            <td class="description last">correct element return</td>
-          </tr><tr>
-            
-            <td class="type">401</td>
-            
-            
-            <td class="description last">in case of unmatched privileges or token absence</td>
-          </tr><tr>
-            
-            <td class="type">404</td>
-            
-            
-            <td class="description last">in case of not founded element</td>
-          </tr><tr>
-            
-            <td class="type">500</td>
-            
-            
-            <td class="description last">in case of internal errors with the request</td>
-          </tr>
-          </table>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line32">line 32</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getStudents"><span class="type-signature">(route) </span>getStudents<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <h5>Route:</h5>
-                            <table class="params">
-                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
-                            <tr>
-                            <td class="type">GET</td>
-                            <td class="name last">/api/v1/students/</td>
-                            </tr>
-                            </table>
-                            
-                            <h5>Header Parameters:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">Authorization</td>
-            <td class="type">String</td>
-            
-            
-            <td class="description last">Bearer token</td>
-          </tr>
-          </table>
-                            <h5>Response:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            <td class="name">every</td>
-            <td class="type">Object</td>
-            
-            
-            <td class="description last">registered element</td>
-          </tr>
-          </table>
-                            <h5>Response Code:</h5>
-          <table class="params">
-            <thead>
-              <tr>
-                
-                <th>Type</th>
-                
-                
-                <th class="last">Description</th>
-              </tr>
-            </thead>
-            <tr>
-            
-            <td class="type">200</td>
-            
-            
-            <td class="description last">elements list returned</td>
-          </tr><tr>
-            
-            <td class="type">400</td>
-            
-            
-            <td class="description last">wrong body parameters</td>
-          </tr><tr>
-            
-            <td class="type">500</td>
-            
-            
-            <td class="description last">internal errors with the request</td>
-          </tr>
-          </table>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line10">line 10</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -565,7 +262,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">GET</td>
-                            <td class="name last">/api/v1/students/myInfo</td>
+                            <td class="name last">/api/v1/students/my-info</td>
                             </tr>
                             </table>
                             
@@ -681,7 +378,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line59">line 59</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -710,7 +407,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">GET</td>
-                            <td class="name last">/api/v1/students/studentSearch</td>
+                            <td class="name last">/api/v1/students/student-search</td>
                             </tr>
                             </table>
                             
@@ -726,11 +423,11 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">undefined</td>
-            <td class="type"></td>
+            <td class="name">studentNumber</td>
+            <td class="type">String</td>
             
             
-            <td class="description last"></td>
+            <td class="description last">searched student number</td>
           </tr>
           </table>
                             <h5>Header Parameters:</h5>
@@ -845,7 +542,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line83">line 83</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -946,7 +643,7 @@
               </tr>
             </thead>
             <tr>
-            <td class="name">student</td>
+            <td class="name">idStudent</td>
             <td class="type">Number</td>
             
             
@@ -1052,7 +749,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line175">line 175</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -1081,7 +778,7 @@
                             <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
                             <tr>
                             <td class="type">PATCH</td>
-                            <td class="name last">/api/v1/students/updateInfo</td>
+                            <td class="name last">/api/v1/students/update-info</td>
                             </tr>
                             </table>
                             
@@ -1120,12 +817,6 @@
             <td class="attributes">optional</td>
             
             <td class="description last">student's Academic Status id</td>
-          </tr><tr>
-            <td class="name">idStatus</td>
-            <td class="type">Number</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">student's status at the platform id</td>
           </tr><tr>
             <td class="name">image</td>
             <td class="type">String</td>
@@ -1252,7 +943,177 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="routes_studentRoutes.js.html">routes/studentRoutes.js</a>, <a href="routes_studentRoutes.js.html#line141">line 141</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line94">line 94</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="updateStudentStatusUpdatestudentstatusattheplatform"><span class="type-signature">(route) </span>updateStudentStatus Update student status at the platform<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <h5>Route:</h5>
+                            <table class="params">
+                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
+                            <tr>
+                            <td class="type">PATCH</td>
+                            <td class="name last">/api/v1/students/update-status</td>
+                            </tr>
+                            </table>
+                            
+                            <h5>Body Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">idStatus</td>
+            <td class="type">Number</td>
+            
+            
+            <td class="description last">student's status at the platform id (only accepts active or suspended)</td>
+          </tr>
+          </table>
+                            <h5>Header Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">Authorization</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last">Bearer token (Student)</td>
+          </tr>
+          </table>
+                            <h5>Response:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">object.data</td>
+            <td class="type">Object</td>
+            
+            
+            <td class="description last">updated element data</td>
+          </tr>
+          </table>
+                            <h5>Response Code:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            
+            <td class="type">200</td>
+            
+            
+            <td class="description last">element updated</td>
+          </tr><tr>
+            
+            <td class="type">401</td>
+            
+            
+            <td class="description last">unmatched privileges or token absence</td>
+          </tr><tr>
+            
+            <td class="type">400</td>
+            
+            
+            <td class="description last">wrong body parameters</td>
+          </tr><tr>
+            
+            <td class="type">404</td>
+            
+            
+            <td class="description last">not founded user</td>
+          </tr><tr>
+            
+            <td class="type">500</td>
+            
+            
+            <td class="description last">internal errors with the request</td>
+          </tr>
+          </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -1286,13 +1147,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DictamenProcedureRoutes.html">DictamenProcedureRoutes</a></li><li><a href="module-DischargeProcedureRoutes.html">DischargeProcedureRoutes</a></li><li><a href="module-EmployeesRoutes.html">EmployeesRoutes</a></li><li><a href="module-EventsRoutes.html">EventsRoutes</a></li><li><a href="module-examples.html">examples</a></li><li><a href="module-GraduationProcedureRoutes.html">GraduationProcedureRoutes</a></li><li><a href="module-MassiveNotificationsRoutes.html">MassiveNotificationsRoutes</a></li><li><a href="module-PostsRoutes.html">PostsRoutes</a></li><li><a href="module-ProcessStepRoutes.html">ProcessStepRoutes</a></li><li><a href="module-SocialServiceProceduresRoutes.html">SocialServiceProceduresRoutes</a></li><li><a href="module-StudentsRoutes.html">StudentsRoutes</a></li><li><a href="module-UnitaryNotifRouters.html">UnitaryNotifRouters</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DictamenProcedureRoutes.html">DictamenProcedureRoutes</a></li><li><a href="module-DischargeProcedureRoutes.html">DischargeProcedureRoutes</a></li><li><a href="module-EmployeesRoutes.html">EmployeesRoutes</a></li><li><a href="module-EventsRoutes.html">EventsRoutes</a></li><li><a href="module-GraduationProcedureRoutes.html">GraduationProcedureRoutes</a></li><li><a href="module-MassiveNotificationsRoutes.html">MassiveNotificationsRoutes</a></li><li><a href="module-PostsRoutes.html">PostsRoutes</a></li><li><a href="module-ProcessStepRoutes.html">ProcessStepRoutes</a></li><li><a href="module-SocialServiceProceduresRoutes.html">SocialServiceProceduresRoutes</a></li><li><a href="module-StudentsRoutes.html">StudentsRoutes</a></li><li><a href="module-UnitaryNotifRouters.html">UnitaryNotifRouters</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jul 21 2022 10:18:59 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jul 25 2022 17:40:14 GMT-0500 (hora de verano central)
 </footer>
 
 <script> prettyPrint(); </script>

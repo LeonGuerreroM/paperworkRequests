@@ -45,7 +45,7 @@ class MNS extends Model {
         return{
             sequelize,
             tableName: MNS_TABLE,
-            modelName: 'MN-Student',
+            modelName: 'MNStudent',
             timestamps: false
         }
     }
