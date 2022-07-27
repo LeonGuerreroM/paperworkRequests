@@ -121,13 +121,13 @@
             
             <td class="description last"></td>
           </tr><tr>
-            <td class="name">idMajor</td>
+            <td class="name">majorId</td>
             <td class="type">Number</td>
             <td class="attributes"></td>
             
             <td class="description last">student's major id</td>
           </tr><tr>
-            <td class="name">idAcademicStatus</td>
+            <td class="name">academicStatusId</td>
             <td class="type">Number</td>
             <td class="attributes"></td>
             
@@ -703,7 +703,7 @@
             <td class="type">404</td>
             
             
-            <td class="description last">not founded user</td>
+            <td class="description last">not founded element</td>
           </tr><tr>
             
             <td class="type">500</td>
@@ -749,7 +749,177 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line155">line 155</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line182">line 182</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="updateStudentAcademicStatus"><span class="type-signature">(route) </span>updateStudentAcademicStatus<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <h5>Route:</h5>
+                            <table class="params">
+                            <thead><tr><th>Method</th><th class="last">Path</th></tr></thead>
+                            <tr>
+                            <td class="type">PATCH</td>
+                            <td class="name last">/api/v1/students/update-academic</td>
+                            </tr>
+                            </table>
+                            
+                            <h5>Body Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">academicStatusId</td>
+            <td class="type">Number</td>
+            
+            
+            <td class="description last">student's Academic Status id</td>
+          </tr>
+          </table>
+                            <h5>Header Parameters:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">Authorization</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last">Bearer token (Student)</td>
+          </tr>
+          </table>
+                            <h5>Response:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            <td class="name">object.data</td>
+            <td class="type">Object</td>
+            
+            
+            <td class="description last">updated element data</td>
+          </tr>
+          </table>
+                            <h5>Response Code:</h5>
+          <table class="params">
+            <thead>
+              <tr>
+                
+                <th>Type</th>
+                
+                
+                <th class="last">Description</th>
+              </tr>
+            </thead>
+            <tr>
+            
+            <td class="type">200</td>
+            
+            
+            <td class="description last">element updated</td>
+          </tr><tr>
+            
+            <td class="type">401</td>
+            
+            
+            <td class="description last">unmatched privileges or token absence</td>
+          </tr><tr>
+            
+            <td class="type">400</td>
+            
+            
+            <td class="description last">wrong body parameters</td>
+          </tr><tr>
+            
+            <td class="type">404</td>
+            
+            
+            <td class="description last">not founded element</td>
+          </tr><tr>
+            
+            <td class="type">500</td>
+            
+            
+            <td class="description last">internal errors with the request</td>
+          </tr>
+          </table>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -806,17 +976,11 @@
             
             <td class="description last"></td>
           </tr><tr>
-            <td class="name">idMajor</td>
+            <td class="name">majorId</td>
             <td class="type">Number</td>
             <td class="attributes">optional</td>
             
             <td class="description last">student's major id</td>
-          </tr><tr>
-            <td class="name">idAcademicStatus</td>
-            <td class="type">Number</td>
-            <td class="attributes">optional</td>
-            
-            <td class="description last">student's Academic Status id</td>
           </tr><tr>
             <td class="name">image</td>
             <td class="type">String</td>
@@ -897,7 +1061,7 @@
             <td class="type">404</td>
             
             
-            <td class="description last">not founded user</td>
+            <td class="description last">not founded element</td>
           </tr><tr>
             
             <td class="type">500</td>
@@ -961,7 +1125,7 @@
 
         
             
-<h4 class="name" id="updateStudentStatusUpdatestudentstatusattheplatform"><span class="type-signature">(route) </span>updateStudentStatus Update student status at the platform<span class="type-signature"></span></h4>
+<h4 class="name" id="updateStudentStatusUsedonaccountdeletionoreactivation"><span class="type-signature">(route) </span>updateStudentStatus Used on account deletion o reactivation<span class="type-signature"></span></h4>
 
 
 
@@ -993,6 +1157,12 @@
             
             
             <td class="description last">student's status at the platform id (only accepts active or suspended)</td>
+          </tr><tr>
+            <td class="name">password</td>
+            <td class="type">String</td>
+            
+            
+            <td class="description last"></td>
           </tr>
           </table>
                             <h5>Header Parameters:</h5>
@@ -1067,7 +1237,7 @@
             <td class="type">404</td>
             
             
-            <td class="description last">not founded user</td>
+            <td class="description last">not founded element</td>
           </tr><tr>
             
             <td class="type">500</td>
@@ -1113,7 +1283,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line128">line 128</a>
+        <a href="studentRoutes.js.html">studentRoutes.js</a>, <a href="studentRoutes.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1153,7 +1323,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jul 25 2022 17:40:14 GMT-0500 (hora de verano central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Jul 27 2022 00:13:14 GMT-0500 (hora de verano central)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -1,6 +1,9 @@
 const express = require('express');
 const success = require('../utils/successResponse');
 
+const Service = require('../services/employeeServices');
+const service = new Service();
+
 const router = express.Router();
 
     /** 
@@ -27,10 +30,9 @@ router.get('/',
 );
 
 
-
     /**
     * @name getEmployee Search an employee by Id
-    * @path {GET} /api/v1/employee/:idEmployee
+    * @path {GET} /api/v1/employee/search/:idEmployee
     *
     * @header {String} Authorization Bearer token (Admin)
     * 
@@ -44,7 +46,7 @@ router.get('/',
     * @code {500} in case of internal errors with the request
     *
     */
-router.get('/:idEmployee',
+router.get('/search/:idEmployee',
     async (req, res) => {
         const { idEmployee } = req.params;
         const employee = await service.getEmployee(idEmployee);
@@ -53,10 +55,9 @@ router.get('/:idEmployee',
 );
 
 
-
     /**
     * @name getEmployeeInfo Show logged employee info
-    * @path {GET} /api/v1/employee/myInfo
+    * @path {GET} /api/v1/employee/my-info
     *
     * @header {String} Authorization Bearer token (Employee)
     *
@@ -68,14 +69,13 @@ router.get('/:idEmployee',
     * @code {500} in case of internal errors with the request
     *
     */
-router.get('/myInfo',
+router.get('/my-info',
     async (req, res) => {
         //TODO sub.id
-        const employee = await service.getEmployee(sub.id);
+        const employee = await service.getEmployee(2);
         success(res, 200, 'employee', employee, 'wanted employee')
     }
 );
-
 
 
     /**
@@ -84,14 +84,14 @@ router.get('/myInfo',
    * 
    * @header {String} Authorization Bearer token (Admin)
    *
-   * @body {Number} employeeNumber labour employee id
+   * @body {String} employeeNumber labour employee id
    * @body {String} email employee's email
    * @body {String} firstName employee's first name
    * @body {String} lastName1 first employee's last name
    * @body {String} lastName2 second employee's last name
    * @body {String} password
    * @body {String} [image] user profile picture
-   * @body {Number} idRol employee's rol id
+   * @body {Number} rolId employee's rol id
    *
    * @response {Object} object.data created element data
    *
@@ -101,25 +101,24 @@ router.get('/myInfo',
    * @code {500} internal errors with the request
    *
    */
-router.post('/createEmployee', 
+router.post('/register-employee', 
     async (req, res) => {
-        const { body } = req;
+        const body = req.body;
         const newEmployee = await service.createEmployee(body);
         success(res, 201, 'newEmployee', newEmployee, 'employee created')
     }
 );
 
 
-
     /**
    * @name updateEmployee Update employee crucial info
-   * @path {PATCH} /api/v1/employees/:idEmployee
+   * @path {PATCH} /api/v1/employees/update/:idEmployee
    *
    * @header {String} Authorization Bearer token (Admin)
    *
    * @params {Number} idEmployee searched employee id
    * 
-   * @body {Number} [employeeNumber] labour employee id
+   * @body {String} [employeeNumber] labour employee id
    * @body {Number} [idRol] employee's rol id
    * 
    * @response {Object} object.data updated element data
@@ -127,19 +126,18 @@ router.post('/createEmployee',
    * @code {200} element updated
    * @code {401} unmatched privileges or token absence
    * @code {400} wrong body parameters
-   * @code {404} not founded user
+   * @code {404} not founded element
    * @code {500} internal errors with the request
    *
    */
-router.patch('/:idEmployee', 
+router.patch('/update/:idEmployee', 
     async (req, res) => {
         const { idEmployee } = req.params;
-        const { body } =  req;
-        const updatedEmployee = await service.updateEmployee(idEmployee, body);
+        const body =  req.body;
+        const updatedEmployee = await service.update(idEmployee, body);
         success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
     }
 );
-
 
 
     /**
@@ -160,19 +158,18 @@ router.patch('/:idEmployee',
    * @code {200} element updated
    * @code {401} unmatched privileges or token absence
    * @code {400} wrong body parameters
-   * @code {404} not founded user
+   * @code {404} not founded element
    * @code {500} internal errors with the request
    *
    */
-router.patch('/updateInfo', 
+router.patch('/update-info', 
     async (req, res) => {
         //TODO use sub.id
         const { body } =  req;
-        const updatedEmployee = await service.updateEmployee(sub.id, body);
+        const updatedEmployee = await service.update(2, body);
         success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
     }
 );
-
 
 
     /**
@@ -194,7 +191,7 @@ router.patch('/updateInfo',
 router.delete('/:idEmployee', 
     async (req, res) => {
         const { idEmployee } = req.params;
-        const deletedEmployeeStatus = await service.deleteEmployee(idEmployee);
+        const deletedEmployeeStatus = await service.delete(idEmployee);
         success(res, 200, 'result', deletedEmployeeStatus, 'employee deleted');
     }
 );

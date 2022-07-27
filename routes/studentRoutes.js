@@ -70,8 +70,8 @@ router.get('/student-search',
    * @body {String} lastName1 first student's last name
    * @body {String} lastName2 second student's last name
    * @body {String} password
-   * @body {Number} idMajor student's major id
-   * @body {Number} idAcademicStatus student's Academic Status id
+   * @body {Number} majorId student's major id
+   * @body {Number} academicStatusId student's Academic Status id
    * @body {String} [image] user profile picture
    *
    * @response {Object} object.data created element data
@@ -99,8 +99,7 @@ router.post('/register',
    *
    * @body {String} [email] institutional email
    * @body {String} [password]
-   * @body {Number} [idMajor] student's major id 
-   * @body {Number} [idAcademicStatus] student's Academic Status id
+   * @body {Number} [majorId] student's major id 
    * @body {String} [image] user profile picture
    * 
    *
@@ -109,7 +108,7 @@ router.post('/register',
    * @code {200} element updated
    * @code {401} unmatched privileges or token absence
    * @code {400} wrong body parameters
-   * @code {404} not founded user
+   * @code {404} not founded element
    * @code {500} internal errors with the request
    *
    */
@@ -117,7 +116,6 @@ router.patch('/update-info',
     async (req, res) => {
         //TODO use sub.id
         //TODO create specialized service to change password
-        //? have additional service oriented to change academic status
         const body = req.body;
         const updatedStudent = await service.update(2, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
@@ -126,25 +124,54 @@ router.patch('/update-info',
 
 
     /**
-   * @name updateStudentStatus Update student status at the platform 
-   * @path {PATCH} /api/v1/students/update-status
+   * @name updateStudentAcademicStatus 
+   * @path {PATCH} /api/v1/students/update-academic
    *
    * @header {String} Authorization Bearer token (Student)
    *
-   * @body {Number} idStatus student's status at the platform id (only accepts active or suspended)
+   * @body {Number} academicStatusId student's Academic Status id
    * 
    * @response {Object} object.data updated element data
    *
    * @code {200} element updated
    * @code {401} unmatched privileges or token absence
    * @code {400} wrong body parameters
-   * @code {404} not founded user
+   * @code {404} not founded element
+   * @code {500} internal errors with the request
+   *
+   */
+router.patch('/update-academic-status', 
+    async (req, res) => {
+        //TODO use sub.id
+        const body = req.body;
+        const updatedStudent = await service.update(2, body);
+        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    }
+);
+
+
+    /**
+   * @name updateStudentStatus Used on account deletion o reactivation 
+   * @path {PATCH} /api/v1/students/update-status
+   *
+   * @header {String} Authorization Bearer token (Student)
+   *
+   * @body {Number} idStatus student's status at the platform id (only accepts active or suspended)
+   * @body {String} password
+   * 
+   * @response {Object} object.data updated element data
+   *
+   * @code {200} element updated
+   * @code {401} unmatched privileges or token absence
+   * @code {400} wrong body parameters
+   * @code {404} not founded element
    * @code {500} internal errors with the request
    *
    */
 router.patch('/update-status', 
     async (req, res) => {
         //TODO use sub.id
+        //TODO ask for password
         const body = req.body;
         const updatedStudent = await service.update(1, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
@@ -170,7 +197,7 @@ router.patch('/update-status',
    * @code {200} element updated
    * @code {401} unmatched privileges or token absence
    * @code {400} wrong body parameters
-   * @code {404} not founded user
+   * @code {404} not founded element
    * @code {500} internal errors with the request
    *
    */

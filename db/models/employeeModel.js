@@ -45,10 +45,10 @@ const EmployeeSchema = {
         allowNull: true,
         type: DataTypes.STRING
     },
-    idRol: {
+    rolId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_rol',
+        field: 'rol_id',
         references: {
             model: ROL_TABLE,
             key: 'id'

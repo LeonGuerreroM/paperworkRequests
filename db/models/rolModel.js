@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
-const ROL_TABLE = 'cat_major';
+const ROL_TABLE = 'cat_rol';
 
 const RolSchema = {
     id: {
@@ -20,7 +20,7 @@ class Rol extends Model {
     static associate(models){
         this.hasMany(models.Employee, {
             as: 'employees',
-            foreignKey: 'idRol'
+            foreignKey: 'rolId'
         });
     }
 
