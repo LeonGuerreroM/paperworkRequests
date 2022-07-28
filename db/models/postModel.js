@@ -16,10 +16,10 @@ const PostSchema = {
         allowNull: false,
         type: DataTypes.STRING
     },
-    idArea: {
+    areaId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_area',
+        field: 'area_id',
         references: {
             model: AREA_TABLE,
             key: 'id'
@@ -37,10 +37,10 @@ const PostSchema = {
         field: 'created_at',
         defaultValue: Sequelize.NOW
     },
-    idAcademicStatus: {
+    academicStatusId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_academic_status',
+        field: 'academic_status_id',
         defaultValue: 1,
         references: {
             model: AS_TABLE,

@@ -22,11 +22,11 @@ class Area extends Model {
     static associate(models){
         this.hasMany(models.Post, {
             as: 'posts',
-            foreignKey: 'idArea'
+            foreignKey: 'areaId'
         });
         this.hasMany(models.Event, {
             as: 'events',
-            foreignKey: 'idArea'
+            foreignKey: 'areaId'
         });
     }
 

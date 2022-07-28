@@ -24,11 +24,10 @@ const EventSchema = {
         type: DataTypes.DATE,
         field: 'end_datetime'
     },
-    idArea: {
+    areaId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_area',
-        defaultValue: 1,
+        field: 'area_id',
         references: {
             model: AREA_TABLE,
             key: 'id'

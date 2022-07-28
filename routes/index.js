@@ -19,7 +19,7 @@ function generalRoutes(app){
     router.use('/students', studentRouter);
     router.use('/employees', employeeRouter);
     router.use('/posts', postRouter);
-    router.use('/event', eventRouter);
+    router.use('/events', eventRouter);
     router.use('/unitary-notifications', unitaryNotifRouter);
     router.use('/massive-notifications', massiveNotifRouter);
     router.use('/process-step', processStepRouter);
