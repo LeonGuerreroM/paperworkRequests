@@ -9,12 +9,12 @@ class eventServices{
     }
 
     async getAll(){
-        const elements = await models.Employee.findAll();
+        const elements = await models.Event.findAll({ include: ['area'] });
         return elements;
     }
 
     async get(id){
-        const element = await models.Employee.findByPk(id);
+        const element = await models.Event.findByPk(id, { include: ['area'] });
         if(!element){
             throw boom.notFound('not founded event');
         }
@@ -22,14 +22,8 @@ class eventServices{
     }
 
     async create(body){
-        const newBody = {
-            ...body,
-            startDatetime: new Date(body.startDatetime),
-            endDatetime: new Date(body.endDatetime),
-        }
-        console.log(newBody);
-        // const newElement = models.Event.create(body);
-        // return newElement;
+        const newElement = models.Event.create(body);
+        return newElement;
     }
 
     async update(id, body){
@@ -47,7 +41,3 @@ class eventServices{
 }
 
 module.exports = eventServices;
-
-
-console.log(new Date());
-console.log(Date())

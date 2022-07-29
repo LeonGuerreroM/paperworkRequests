@@ -24,17 +24,18 @@ const service = new Service();
      */
 router.get('/calendar', 
     async (req, res) => {
-        const events = await service.getEvents();
+        const events = await service.getAll();
         success(res, 200, 'events', events, 'events list');
     }
 );
-
 
 
     /**
     * @name getEvent
     * @path {GET} /api/v1/events/calendar/:idEvent
     *
+    * @header {String} Authorization Bearer token (Student, Employee)
+    * 
     * @params {Number} idEvent searched event id
     * 
     * @header {String} Authorization Bearer token (StudentEmployee)
@@ -47,23 +48,24 @@ router.get('/calendar',
     * @code {500} in case of internal errors with the request
     *
     */
-router.get('calendar/:idEvent', 
+router.get('/calendar/:idEvent', 
     async (req, res) => {
         const { idEvent } = req.params;
-        const event = await service.getPost(idEvent);
+        const event = await service.get(idEvent);
         success(res, 200, 'event', event, 'wanted event');
     }
 )
-
 
 
     /**
    * @name createEvent
    * @path {POST} /api/v1/events/create-event
    *
+   * @header {String} Authorization Bearer token (Employee)
+   * 
    * @body {String} name event name
-   * @body {String} startDateTime event starting moment
-   * @body {String} endDateTime  event ending moment
+   * @body {Date} startDateTime event starting moment
+   * @body {Date} endDateTime  event ending moment
    * @body {Number} idArea event area 
    *
    * @response {Object} object.data created element data
@@ -84,16 +86,35 @@ router.post('/create',
 );
 
 
-
-    
-router.patch('/:id', 
+    /**
+   * @name updateEvent
+   * @path {PATCH} /api/v1/events/:idEvent
+   *
+   * @header {String} Authorization Bearer token (Employee)
+   *
+   * @body {String} name event name
+   * @body {Date} startDateTime event starting moment
+   * @body {Date} endDateTime  event ending moment
+   * @body {Number} idArea event area
+   * 
+   * @response {Object} object.data updated element data
+   *
+   * @code {200} element updated
+   * @code {401} unmatched privileges or token absence
+   * @code {400} wrong body parameters
+   * @code {404} not founded element
+   * @code {500} internal errors with the request
+   *
+   */
+router.patch('/:idEvent', 
     async (req, res) => {
-        const { id } = req.params;
+        const { idEvent } = req.params;
         const body =  req.body;
-        const updatedEvent = await service.update(id, body);
+        const updatedEvent = await service.update(idEvent, body);
         success(res, 200, 'updatedEvent', updatedEvent, 'event updated');
     }
 );
+
 
     /**
    * @name deleteEvent
