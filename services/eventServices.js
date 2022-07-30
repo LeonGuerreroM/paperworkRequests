@@ -2,6 +2,9 @@ const { models } = require('../lib/sequelize');
 
 const boom = require('@hapi/boom');
 
+const Service = require('./massiveNotifServices');
+const service = new Service();
+
 class eventServices{
 
     constructor(){
@@ -23,6 +26,17 @@ class eventServices{
 
     async create(body){
         const newElement = await models.Event.create(body);
+
+        // * massive notification body creation * //
+        const area = await models.Area.findByPk(body.areaId);
+        const MNBody = {
+            message: area.dataValues.area+" agendó el evento "+body.name,
+            route: "/api/v1/events/calendar/"+newElement.id,
+            levelId: 3
+        }
+        await service.createEventNotification(MNBody);
+        //* - *//
+
         return newElement;
     }
 

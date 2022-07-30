@@ -33,16 +33,14 @@ class postServices{
         const newElement = await models.Post.create(body); //return of create/update/delete are values
                                                             //return of gets are models
 
-        // * massive notification creation * //
+        // * massive notification body creation * //
         const area = await models.Area.findByPk(body.areaId);
-        //todo change local url to deploy url
-        const url =  "/local_url"
         const MNBody = {
             message: "Esta publicación de "+area.dataValues.area+" podría interesarte.",
-            route: url+"/api/v1/posts/"+newElement.id,
+            route: "/api/v1/posts/"+newElement.id,
             levelId: 3
         }
-        await services.create(MNBody, body.academicStatusId);
+        await services.createPostNotification(MNBody, body.academicStatusId);
         //* - *//
 
         return newElement;

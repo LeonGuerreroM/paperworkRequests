@@ -29,7 +29,7 @@ const router = express.Router();
 router.get('/my-info', 
     async (req, res) => { //eslint-disable-line
         //TODO use sub.id
-        const student = await service.getStudent(3);
+        const student = await service.getStudent(6);
         success(res, 200, 'student', student, 'required student');
     }
 );
@@ -116,9 +116,9 @@ router.patch('/update-info',
     async (req, res) => {
         //TODO use sub.id
         //TODO create specialized service to change password
-        //? todo double check password on post and patch
+        //todo double check password on post and patch
         const body = req.body;
-        const updatedStudent = await service.update(2, body);
+        const updatedStudent = await service.update(6, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
     }
 );
@@ -145,7 +145,7 @@ router.patch('/update-academic-status',
     async (req, res) => {
         //TODO use sub.id
         const body = req.body;
-        const updatedStudent = await service.update(2, body);
+        const updatedStudent = await service.update(6, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
     }
 );
@@ -169,12 +169,11 @@ router.patch('/update-academic-status',
    * @code {500} internal errors with the request
    *
    */
-router.patch('/update-status', 
+router.patch('/update-status', //! promise pending means it was async and something is missing 
     async (req, res) => {
         //TODO use sub.id
-        //TODO ask for password once hashing is ready. 
         const body = req.body;
-        const updatedStudent = await service.update(1, body);
+        const updatedStudent = await service.updateStatus(6, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
     }
 );

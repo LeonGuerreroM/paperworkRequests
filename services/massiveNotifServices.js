@@ -1,4 +1,5 @@
 const { models } = require('../lib/sequelize');
+const { Op } = require('sequelize');
 
 const boom = require('@hapi/boom');
 
@@ -10,13 +11,15 @@ class MassiveNotifServices{
     constructor(){
 
     }
-
+    
     async getStudentNotifications(studentId){
-        const relations = await models.MNStudent.findAll({ where: {studentId} }) //! its an array, you give it the object format on reponse.json
-        
+        const relations = await models.MNStudent.findAll({ where: {
+            [Op.or]: [{studentId}, {studentId:0}] //! Add student default id ZERO as admin
+        }}); //! its an array, you give it the object format on response.json
+
         let notificationsList = [];
         for(let relation of relations){
-            const notification = await models.MassiveNotif.findByPk(relation.id)
+            const notification = await models.MassiveNotif.findByPk(relation.massiveNotifId)
             notificationsList.push(notification);
         }
 
@@ -31,7 +34,7 @@ class MassiveNotifServices{
         return element;
     }
 
-    async create(body, academicStatusId){
+    async createPostNotification(body, academicStatusId){
         const newElement = await models.MassiveNotif.create(body);
 
         //* adding relations to MN-Student relation table *//
@@ -55,6 +58,21 @@ class MassiveNotifServices{
             };
             await models.MNStudent.create(newRelationBody);
         }
+        //* - *//
+
+        return newElement;
+    }
+
+    async createEventNotification(body){
+        const newElement = await models.MassiveNotif.create(body);
+
+        //* adding relations to MN-Student relation table *//
+        const relationBody = {
+            massiveNotifId: newElement.id,
+            studentId: 0 //those notifications with studentId 0 will be for everyone
+        }
+        
+        await models.MNStudent.create(relationBody);
         //* - *//
 
         return newElement;

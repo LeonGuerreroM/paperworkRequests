@@ -16,7 +16,7 @@ const router = express.Router();
      * 
      * @header {String} Authorization Bearer token (Student)
      * 
-     * @response {Object} every registered element
+     * @response {Object} every correspondent registered element
      * 
      * @code {200} elements list returned
      * @code {400} wrong body parameters
