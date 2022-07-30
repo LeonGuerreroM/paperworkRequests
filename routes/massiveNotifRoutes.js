@@ -23,12 +23,16 @@ const router = express.Router();
      * @code {500} internal errors with the request
      */
 router.get('/my-notifications', //sub.id
-    async(req, res) => {
-        //TODO use sub.id
-        //? define query stuff
-        //const { query } = req;
-        const notifications = await service.getStudentNotifications(3);
-        success(res, 200, 'notifications', notifications, 'wanted notifications');
+    async(req, res, next) => {
+        try{
+            //TODO use sub.id
+            //? define query stuff
+            //const { query } = req;
+            const notifications = await service.getStudentNotifications(3);
+            success(res, 200, 'notifications', notifications, 'wanted notifications');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -50,10 +54,14 @@ router.get('/my-notifications', //sub.id
      * 
      */
 router.get('/single/:notificationId', 
-    async(req, res) => {
-        const { notificationId } = req.params;
-        const notification = await service.get(notificationId);
-        success(res, 200, 'notification', notification, 'wanted notification');
+    async(req, res, next) => {
+        try{
+            const { notificationId } = req.params;
+            const notification = await service.get(notificationId);
+            success(res, 200, 'notification', notification, 'wanted notification');
+        }catch(error){
+            next(error);
+        }
     }
 );
 

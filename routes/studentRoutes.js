@@ -27,10 +27,14 @@ const router = express.Router();
    *
    */
 router.get('/my-info', 
-    async (req, res) => { //eslint-disable-line
-        //TODO use sub.id
-        const student = await service.getStudent(6);
-        success(res, 200, 'student', student, 'required student');
+    async (req, res, next) => { //eslint-disable-line
+        try{
+            //TODO use sub.id
+            const student = await service.getStudent(6);
+            success(res, 200, 'student', student, 'required student');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -52,10 +56,14 @@ router.get('/my-info',
    *
    */
 router.get('/student-search', 
-    async (req, res) => {
-        const { studentNumber } = req.body;
-        const student = await service.studentSearch(studentNumber);
-        success(res, 200, 'student', student, 'required student');
+    async (req, res, next) => {
+        try{
+            const { studentNumber } = req.body;
+            const student = await service.studentSearch(studentNumber);
+            success(res, 200, 'student', student, 'required student');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -83,10 +91,14 @@ router.get('/student-search',
    *
    */
 router.post('/register', 
-    async (req, res) => {
-        const body = req.body;
-        const newStudent = await service.create(body);
-        success(res, 201, 'newStudent', newStudent, 'student created')
+    async (req, res, next) => {
+        try{
+            const body = req.body;
+            const newStudent = await service.create(body);
+            success(res, 201, 'newStudent', newStudent, 'student created')
+        }catch(error){
+            next(error)
+        }
     }
 );
 
@@ -113,13 +125,17 @@ router.post('/register',
    *
    */
 router.patch('/update-info', 
-    async (req, res) => {
-        //TODO use sub.id
-        //TODO create specialized service to change password
-        //todo double check password on post and patch
-        const body = req.body;
-        const updatedStudent = await service.update(6, body);
-        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    async (req, res, next) => {
+        try{
+            //TODO use sub.id
+            //TODO create specialized service to change password
+            //todo double check password on post and patch
+            const body = req.body;
+            const updatedStudent = await service.update(6, body);
+            success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -142,11 +158,15 @@ router.patch('/update-info',
    *
    */
 router.patch('/update-academic-status', 
-    async (req, res) => {
-        //TODO use sub.id
-        const body = req.body;
-        const updatedStudent = await service.update(6, body);
-        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    async (req, res, next) => {
+        try{
+            //TODO use sub.id
+            const body = req.body;
+            const updatedStudent = await service.update(6, body);
+            success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -170,11 +190,15 @@ router.patch('/update-academic-status',
    *
    */
 router.patch('/update-status', //! promise pending means it was async and something is missing 
-    async (req, res) => {
-        //TODO use sub.id
-        const body = req.body;
-        const updatedStudent = await service.updateStatus(6, body);
-        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    async (req, res, next) => {
+        try{
+            //TODO use sub.id
+            const body = req.body;
+            const updatedStudent = await service.updateStatus(6, body);
+            success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -202,11 +226,15 @@ router.patch('/update-status', //! promise pending means it was async and someth
    *
    */
 router.patch('/:idStudent', 
-    async (req, res) => {
-        const { idStudent } = req.params;
-        const body = req.body;
-        const updatedStudent = await service.update(idStudent, body);
-        success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+    async (req, res, next) => {
+        try{
+            const { idStudent } = req.params;
+            const body = req.body;
+            const updatedStudent = await service.update(idStudent, body);
+            success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 

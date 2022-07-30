@@ -23,9 +23,13 @@ const router = express.Router();
      * @code {500} internal errors with the request
      */
 router.get('/', 
-    async (req, res) => {
-        const employees = await service.getEmployees();
-        success(res, 200, 'employees', employees, 'employees list');
+    async (req, res, next) => {
+        try{
+            const employees = await service.getEmployees();
+            success(res, 200, 'employees', employees, 'employees list');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -47,10 +51,14 @@ router.get('/',
     *
     */
 router.get('/search/:idEmployee',
-    async (req, res) => {
-        const { idEmployee } = req.params;
-        const employee = await service.getEmployee(idEmployee);
-        success(res, 200, 'employee', employee, 'wanted employee')
+    async (req, res, next) => {
+        try{
+            const { idEmployee } = req.params;
+            const employee = await service.getEmployee(idEmployee);
+            success(res, 200, 'employee', employee, 'wanted employee')
+        }catch(error){
+            next(error)
+        }
     }
 );
 
@@ -70,10 +78,14 @@ router.get('/search/:idEmployee',
     *
     */
 router.get('/my-info',
-    async (req, res) => {
-        //TODO sub.id
-        const employee = await service.getEmployee(2);
-        success(res, 200, 'employee', employee, 'wanted employee')
+    async (req, res, next) => {
+        try{
+            //TODO sub.id
+            const employee = await service.getEmployee(2);
+            success(res, 200, 'employee', employee, 'wanted employee')
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -102,10 +114,14 @@ router.get('/my-info',
    *
    */
 router.post('/register-employee', 
-    async (req, res) => {
-        const body = req.body;
-        const newEmployee = await service.createEmployee(body);
-        success(res, 201, 'newEmployee', newEmployee, 'employee created')
+    async (req, res, next) => {
+        try{
+            const body = req.body;
+            const newEmployee = await service.createEmployee(body);
+            success(res, 201, 'newEmployee', newEmployee, 'employee created')
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -131,11 +147,15 @@ router.post('/register-employee',
    *
    */
 router.patch('/update/:idEmployee', 
-    async (req, res) => {
-        const { idEmployee } = req.params;
-        const body =  req.body;
-        const updatedEmployee = await service.update(idEmployee, body);
-        success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
+    async (req, res, next) => {
+        try{
+            const { idEmployee } = req.params;
+            const body =  req.body;
+            const updatedEmployee = await service.update(idEmployee, body);
+            success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -163,11 +183,15 @@ router.patch('/update/:idEmployee',
    *
    */
 router.patch('/update-info', 
-    async (req, res) => {
-        //TODO use sub.id
-        const { body } =  req;
-        const updatedEmployee = await service.update(2, body);
-        success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
+    async (req, res, next) => {
+        try{
+            //TODO use sub.id
+            const { body } =  req;
+            const updatedEmployee = await service.update(2, body);
+            success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -189,10 +213,14 @@ router.patch('/update-info',
    *
    */
 router.delete('/:idEmployee', 
-    async (req, res) => {
-        const { idEmployee } = req.params;
-        const deletedEmployeeStatus = await service.delete(idEmployee);
-        success(res, 200, 'result', deletedEmployeeStatus, 'employee deleted');
+    async (req, res, next) => {
+        try{
+            const { idEmployee } = req.params;
+            const deletedEmployeeStatus = await service.delete(idEmployee);
+            success(res, 200, 'result', deletedEmployeeStatus, 'employee deleted');
+        }catch(error){
+            next(error);
+        }
     }
 );
 

@@ -25,10 +25,14 @@ const service = new Service();
      * @code {500} internal errors with the request
      */
 router.get('/feed', 
-    async (req, res) => {
-        const { idArea } = req.query;
-        const posts = await service.getAll(idArea);
-        success(res, 200, 'posts', posts, 'posts list');
+    async (req, res, next) => {
+        try{
+            const { idArea } = req.query;
+            const posts = await service.getAll(idArea);
+            success(res, 200, 'posts', posts, 'posts list');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -51,10 +55,14 @@ router.get('/feed',
     *
     */
 router.get('/:idPost', 
-    async (req, res) => {
-        const { idPost } = req.params;
-        const post = await service.get(idPost);
-        success(res, 200, 'post', post, 'wanted post');
+    async (req, res, next) => {
+        try{
+            const { idPost } = req.params;
+            const post = await service.get(idPost);
+            success(res, 200, 'post', post, 'wanted post');
+        }catch(error){
+            next(error);
+        }
     }
 )
 
@@ -81,11 +89,15 @@ router.get('/:idPost',
    *
    */
 router.post('/create', 
-    async (req, res) => {
-        //todo validate max 255 chars
-        const body = req.body;
-        const newPost = await service.create(body);
-        success(res, 201, 'newPost', newPost, 'post created')
+    async (req, res, next) => {
+        try{
+            //todo validate max 255 chars
+            const body = req.body;
+            const newPost = await service.create(body);
+            success(res, 201, 'newPost', newPost, 'post created')
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -115,11 +127,15 @@ router.post('/create',
    *
    */
 router.patch('/:idPost', 
-    async (req, res) => {
-        const { idPost } = req.params;
-        const body =  req.body;
-        const updatedPost = await service.update(idPost, body);
-        success(res, 200, 'updatedPost', updatedPost, 'post updated');
+    async (req, res, next) => {
+        try{
+            const { idPost } = req.params;
+            const body =  req.body;
+            const updatedPost = await service.update(idPost, body);
+            success(res, 200, 'updatedPost', updatedPost, 'post updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -142,10 +158,14 @@ router.patch('/:idPost',
    *
    */
 router.delete('/:idPost', 
-    async (req, res) => {
-        const { idPost } = req.params;
-        const deletedPostStatus = await service.delete(idPost);
-        success(res, 200, 'result', deletedPostStatus, 'post deleted');
+    async (req, res, next) => {
+        try{
+            const { idPost } = req.params;
+            const deletedPostStatus = await service.delete(idPost);
+            success(res, 200, 'result', deletedPostStatus, 'post deleted');
+        }catch(error){
+            next(error);
+        }
     }
 );
 

@@ -23,9 +23,13 @@ const service = new Service();
      * @code {500} internal errors with the request
      */
 router.get('/calendar', 
-    async (req, res) => {
-        const events = await service.getAll();
-        success(res, 200, 'events', events, 'events list');
+    async (req, res, next) => {
+        try{
+            const events = await service.getAll();
+            success(res, 200, 'events', events, 'events list');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -49,10 +53,14 @@ router.get('/calendar',
     *
     */
 router.get('/calendar/:idEvent', 
-    async (req, res) => {
-        const { idEvent } = req.params;
-        const event = await service.get(idEvent);
-        success(res, 200, 'event', event, 'wanted event');
+    async (req, res, next) => {
+        try{
+            const { idEvent } = req.params;
+            const event = await service.get(idEvent);
+            success(res, 200, 'event', event, 'wanted event');
+        }catch(error){
+            next(error);
+        }
     }
 )
 
@@ -77,11 +85,15 @@ router.get('/calendar/:idEvent',
    *
    */
 router.post('/create', 
-    async (req, res) => {
-        const body  = req.body;
-        //todo verify datetime time zone and sequelize.now
-        const newEvent = await service.create(body);
-        success(res, 201, 'newEvent', newEvent, 'event created')
+    async (req, res, next) => {
+        try{
+            const body  = req.body;
+            //todo verify datetime time zone and sequelize.now
+            const newEvent = await service.create(body);
+            success(res, 201, 'newEvent', newEvent, 'event created');
+        }catch(error){
+            next(error)
+        }
     }
 );
 
@@ -107,11 +119,15 @@ router.post('/create',
    *
    */
 router.patch('/:idEvent', 
-    async (req, res) => {
-        const { idEvent } = req.params;
-        const body =  req.body;
-        const updatedEvent = await service.update(idEvent, body);
-        success(res, 200, 'updatedEvent', updatedEvent, 'event updated');
+    async (req, res, next) => {
+        try{
+            const { idEvent } = req.params;
+            const body =  req.body;
+            const updatedEvent = await service.update(idEvent, body);
+            success(res, 200, 'updatedEvent', updatedEvent, 'event updated');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
@@ -133,10 +149,14 @@ router.patch('/:idEvent',
    *
    */
 router.delete('/:idEvent', 
-    async (req, res) => {
-        const { idEvent } = req.params;
-        const deletedEventStatus = await service.delete(idEvent);
-        success(res, 200, 'result', deletedEventStatus, 'event deleted');
+    async (req, res, next) => {
+        try{
+            const { idEvent } = req.params;
+            const deletedEventStatus = await service.delete(idEvent);
+            success(res, 200, 'result', deletedEventStatus, 'event deleted');
+        }catch(error){
+            next(error);
+        }
     }
 );
 
