@@ -1,37 +1,14 @@
 const express = require('express');
 const success = require('../utils/successResponse');
 
+const Service = require('../services/massiveNotifServices');
+const service = new Service();
+
 const router = express.Router();
 
     /**
      * @module MassiveNotificationsRoutes
      */
-
-    /**
-     * @name getMassiveNotification
-     * @path {GET} /api/v1/massive-notifications/:id
-     * 
-     * @header {String} Authorization Bearer token (Student)
-     * 
-     * @params {Number} id searched notification id
-     * 
-     * @response {Object} requested element
-     *
-     * @code {200} correct element return
-     * @code {401} in case of unmatched privileges or token absence
-     * @code {404} in case of not founded element
-     * @code {500} in case of internal errors with the request
-     * 
-     */
-router.get('/:id', 
-    async(req, res) => {
-        const { id } = req.params;
-        const notification = await service.getNotification(id);
-        success(res, 200, 'notification', notification, 'wanted notification');
-    }
-);
-
-
 
     /**
      * @name getStudentMassiveNotifications
@@ -48,10 +25,39 @@ router.get('/:id',
 router.get('/my-notifications', //sub.id
     async(req, res) => {
         //TODO use sub.id
-        const { query } = req;
-        const notifications = await service.getStudentNotifications(query);
+        //? define query stuff
+        //const { query } = req;
+        const notifications = await service.getStudentNotifications(3);
         success(res, 200, 'notifications', notifications, 'wanted notifications');
     }
 );
+
+    
+    /**
+     * @name getMassiveNotification
+     * @path {GET} /api/v1/massive-notifications/single/:id
+     * 
+     * @header {String} Authorization Bearer token (Student)
+     * 
+     * @params {Number} notificationId searched massive notification id
+     * 
+     * @response {Object} requested element
+     *
+     * @code {200} correct element return
+     * @code {401} in case of unmatched privileges or token absence
+     * @code {404} in case of not founded element
+     * @code {500} in case of internal errors with the request
+     * 
+     */
+router.get('/single/:notificationId', 
+    async(req, res) => {
+        const { notificationId } = req.params;
+        const notification = await service.get(notificationId);
+        success(res, 200, 'notification', notification, 'wanted notification');
+    }
+);
+
+
+
 
 module.exports = router;

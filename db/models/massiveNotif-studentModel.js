@@ -11,10 +11,10 @@ const MNSSchema = {
         primaryKey: true,
         type: DataTypes.INTEGER
     },
-    idStudent: {
+    studentId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_student',
+        field: 'student_id',
         references: {
             model: STUDENT_TABLE,
             key: 'id'
@@ -22,10 +22,10 @@ const MNSSchema = {
         onUpdate: 'CASCADE', 
         onDelete: 'SET NULL'
     },
-    idMassiveNotif: {
+    massiveNotifId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_massive_notif',
+        field: 'massive_notif_id',
         references: {
             model: MN_TABLE,
             key: 'id'

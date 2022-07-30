@@ -8,6 +8,17 @@ class StudentServices{
 
     }
 
+    async getAll(academicStatusId){ 
+        const options = {
+            attributes: {
+                exclude: ['password']
+            },
+            where: { academicStatusId }
+        }
+        const elements = await models.Student.findAll(options);
+        return elements;
+    }
+
     async getStudent(id){
         const relations = {
             include: ['major', 'status', 'academicStatus']
@@ -55,6 +66,11 @@ class StudentServices{
         const updatedElement = await element.update(newBody);
         delete updatedElement.dataValues.password;
         return updatedElement;
+    }
+
+    async updateStatus(id, body){
+        const element = await this.getAll(id);
+        //if()
     }
 
 }

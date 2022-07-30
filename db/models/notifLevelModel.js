@@ -11,7 +11,7 @@ const LevelSchema = {
     },
     level: {
         allowNull: false,
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
     }
 };
 
@@ -20,11 +20,11 @@ class Level extends Model {
     static associate(models){
         this.hasMany(models.MassiveNotif, {
             as: 'massiveNotifs',
-            foreignKey: 'idLevel'
+            foreignKey: 'levelId'
         })
         this.hasMany(models.UnitaryNotif, {
             as: 'unitaryNotifs',
-            foreignKey: 'idLevel'
+            foreignKey: 'levelId'
         })
     }
 

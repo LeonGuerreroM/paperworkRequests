@@ -16,8 +16,20 @@ class EmployeeServices{
             },
             include: ['rol']
         }
-        const elements = models.Employee.findAll(options);
+        const elements = await models.Employee.findAll(options);
+
+        // for(let i=0; i<elements.length; i++){
+        //     console.log(elements[i].get({
+        //         plain: true
+        //     }));
+        // }
+
+        // elements.forEach( element => {
+        //     console.log(element.id)
+        // });
+
         return elements;
+
     }
 
     async getEmployee(id){

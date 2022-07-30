@@ -116,6 +116,7 @@ router.patch('/update-info',
     async (req, res) => {
         //TODO use sub.id
         //TODO create specialized service to change password
+        //? todo double check password on post and patch
         const body = req.body;
         const updatedStudent = await service.update(2, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
@@ -171,7 +172,7 @@ router.patch('/update-academic-status',
 router.patch('/update-status', 
     async (req, res) => {
         //TODO use sub.id
-        //TODO ask for password
+        //TODO ask for password once hashing is ready. 
         const body = req.body;
         const updatedStudent = await service.update(1, body);
         success(res, 200, 'updatedStudent', updatedStudent, 'student updated');

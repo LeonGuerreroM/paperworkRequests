@@ -22,7 +22,7 @@ class eventServices{
     }
 
     async create(body){
-        const newElement = models.Event.create(body);
+        const newElement = await models.Event.create(body);
         return newElement;
     }
 

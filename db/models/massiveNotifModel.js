@@ -1,6 +1,5 @@
 const {DataTypes, Model, Sequelize} = require('sequelize');
 const {LEVEL_TABLE} = require('./notifLevelModel');
-const { Student } = require('./studentModel');
 
 const MN_TABLE = 'tbl_massive_notif';
 
@@ -15,7 +14,7 @@ const MNSchema = {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    link: {
+    route: {
         allowNull: false,
         type: DataTypes.STRING,
     },
@@ -25,10 +24,10 @@ const MNSchema = {
         field: 'created_at',
         defaultValue: Sequelize.NOW
     },
-    idLevel: {
+    levelId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'id_level',
+        field: 'level_id',
         references: {
             model: LEVEL_TABLE,
             key: 'id'
@@ -46,8 +45,8 @@ class MN extends Model{
         this.belongsToMany(models.Student, {
             as: 'receivers',
             through: models.MNStudent,
-            foreignKey: 'idMassiveNotif',
-            otherKey: 'idStudent'
+            foreignKey: 'massiveNotifId',
+            otherKey: 'studentId'
         });
     }
 

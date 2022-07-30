@@ -122,10 +122,10 @@ class Student extends Model {
             as: 'psteps',
             foreignKey: 'idStudent'
         });*/
-        this.hasMany(models.UnitaryNotif, {
-            as: 'unitaryNotifs',
-            foreignKey: 'idStudent'
-        });
+        // this.hasMany(models.UnitaryNotif, {
+        //     as: 'unitaryNotifs',
+        //     foreignKey: 'idStudent'
+        // });
 
     }
 
