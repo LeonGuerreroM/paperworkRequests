@@ -186,8 +186,43 @@ router.patch('/update-info',
     async (req, res, next) => {
         try{
             //TODO use sub.id
-            const { body } =  req;
-            const updatedEmployee = await service.update(2, body);
+            const body = req.body;
+            const updatedEmployee = await service.update(3, body);
+            success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
+        }catch(error){
+            next(error);
+        }
+    }
+);
+
+    /**
+   * @name changePassword
+   * @path {PATCH} /api/v1/employees/change-password
+   *
+   * @header {String} Authorization Bearer token (Employee)
+   *
+   * @params {String} password actual employee password
+   * @params {String} newPassword new employee password
+   * @params {String} repeatedPassword new employee password confirmation
+   * 
+   * @body {String} [employeeNumber] labour employee id
+   * @body {Number} [idRol] employee's rol id
+   * 
+   * @response {Object} object.data updated element data
+   *
+   * @code {200} element updated
+   * @code {401} Wrong previous password. Unmatched privileges or token absence
+   * @code {400} Wrong body parameters. Different newPassword and repeated password
+   * @code {404} not founded element
+   * @code {500} internal errors with the request
+   *
+   */
+router.patch('/change-password',
+    async (req, res, next) => {
+        try{
+            //todo use sub.id
+            const body = req.body;
+            const updatedEmployee = await service.changePassword(3, body);
             success(res, 200, 'updatedEmployee', updatedEmployee, 'employee updated');
         }catch(error){
             next(error);

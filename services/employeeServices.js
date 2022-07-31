@@ -1,6 +1,7 @@
 
 const { models } = require('../lib/sequelize');
 
+const bcrypt = require('bcrypt');
 const boom = require('@hapi/boom');
 
 class EmployeeServices{
@@ -53,9 +54,33 @@ class EmployeeServices{
     }
 
     async createEmployee(body){
-        const newElement = await models.Employee.create(body);
+        const newBody = {
+            ...body,
+            password: await bcrypt.hash(body.password, 10)
+        }
+        const newElement = await models.Employee.create(newBody);
         delete newElement.dataValues.password;
         return newElement;
+    }
+
+    async changePassword(id, body){
+        const element = await models.Employee.findByPk(id);
+        if(!element){
+            throw boom.notFound('not founded employee');
+        }
+        const isMatch = await bcrypt.compare(body.password, element.password);
+        if(!isMatch){
+            throw boom.unauthorized();
+        }
+        if(body.newPassword != body.repeatedPassword){
+            throw boom.badRequest();
+        }
+        const newBody = {
+            password: await bcrypt.hash(body.newPassword, 10)
+        }
+        const updatedElement = await element.update(newBody);
+        delete updatedElement.dataValues.password;
+        return updatedElement;
     }
 
     async delete(id){
