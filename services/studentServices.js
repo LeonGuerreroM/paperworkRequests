@@ -92,6 +92,26 @@ class StudentServices{
         return updatedElement;
     }
 
+    async changePassword(id, body){
+        const element = await models.Student.findByPk(id);
+        if(!element){
+            throw boom.notFound('not founded student');
+        }
+        const isMatch = await bcrypt.compare(body.password, element.password);
+        if(!isMatch){
+            throw boom.unauthorized();
+        }
+        if(body.newPassword != body.repeatedPassword){
+            throw boom.badRequest();
+        }
+        const newBody = {
+            password: await bcrypt.hash(body.newPassword, 10)
+        }
+        const updatedElement = await element.update(newBody);
+        delete updatedElement.dataValues.password;
+        return updatedElement;
+    }
+
 }
 
 module.exports = StudentServices;

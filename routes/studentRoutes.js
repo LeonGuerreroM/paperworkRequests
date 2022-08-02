@@ -204,6 +204,39 @@ router.patch('/update-status', //! promise pending means it was async and someth
 
 
     /**
+   * @name changePassword
+   * @path {PATCH} /api/v1/students/change-password
+   *
+   * @header {String} Authorization Bearer token (Student)
+   *
+   * @body {String} password actual employee password
+   * @body {String} newPassword new employee password
+   * @body {String} repeatedPassword new employee password confirmation
+   * 
+   * @response {Object} object.data updated element data
+   *
+   * @code {200} element updated
+   * @code {401} Wrong previous password. Unmatched privileges or token absence
+   * @code {400} Wrong body parameters. Different newPassword and repeated password
+   * @code {404} not founded element
+   * @code {500} internal errors with the request
+   *
+   */
+router.patch('/change-password',
+    async (req, res, next) => {
+        try{
+            //todo use sub.id
+            const body = req.body;
+            const updatedStudent = await service.changePassword(6, body);
+            success(res, 200, 'updatedStudent', updatedStudent, 'student updated');
+        }catch(error){
+            next(error);
+        }
+    }
+);
+
+
+    /**
    * @name updateStudent Update student crucial info
    * @path {PATCH} /api/v1/students/:idStudent
    *

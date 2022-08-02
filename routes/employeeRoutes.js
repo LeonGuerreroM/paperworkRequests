@@ -201,12 +201,9 @@ router.patch('/update-info',
    *
    * @header {String} Authorization Bearer token (Employee)
    *
-   * @params {String} password actual employee password
-   * @params {String} newPassword new employee password
-   * @params {String} repeatedPassword new employee password confirmation
-   * 
-   * @body {String} [employeeNumber] labour employee id
-   * @body {Number} [idRol] employee's rol id
+   * @body {String} password actual employee password
+   * @body {String} newPassword new employee password
+   * @body {String} repeatedPassword new employee password confirmation
    * 
    * @response {Object} object.data updated element data
    *
